@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Knowledge Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">&#9679;</span>
+    Knowledge Assistant
+  </div>
+  <div class="nav-stats">
+    <span id="stat-docs">0 docs</span>
+    <span class="divider">·</span>
+    <span id="stat-chunks">0 chunks</span>
+  </div>
+</nav>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <h3>Upload Documents</h3>
+      <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+        <div class="upload-icon">&#8679;</div>
+        <p>Click to upload</p>
+        <small>PDF, TXT, Markdown</small>
+      </div>
+      <input type="file" id="file-input" accept=".pdf,.txt,.md,.markdown" style="display:none" onchange="uploadFile(this)"/>
+      <div id="upload-status" class="hidden"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>Documents</h3>
+        <span id="doc-count-badge" class="count-badge">0</span>
+      </div>
+      <div id="documents-list">
+        <div class="empty-docs">No documents yet</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="chat-main">
+    <div class="chat-header">
+      <h2>Chat with your knowledge base</h2>
+      <button onclick="clearChat()" class="btn-clear">Clear history</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <div class="welcome-message">
+        <div class="welcome-icon">&#9679;</div>
+        <h3>Your personal AI knowledge assistant</h3>
+        <p>Upload documents on the left, then ask anything. I'll answer with citations from your files.</p>
+        <div class="supported-formats">
+          <span>PDF</span><span>TXT</span><span>Markdown</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <div class="input-row">
+        <textarea
+          id="question-input"
+          placeholder="Ask anything about your documents..."
+          rows="1"
+          onkeydown="handleKey(event)"
+          oninput="autoResize(this)"
+        ></textarea>
+        <button id="send-btn" onclick="sendMessage()">
+          <span>&#10148;</span>
+        </button>
+      </div>
+      <div class="input-hint">Press Enter to send · Shift+Enter for new line</div>
+    </div>
+  </main>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

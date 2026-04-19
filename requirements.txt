@@ -1,0 +1,9 @@
+flask
+flask-sqlalchemy
+groq
+python-dotenv
+chromadb
+sentence-transformers
+pypdf2
+markdown
+werkzeug
