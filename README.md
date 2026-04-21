@@ -1,6 +1,6 @@
 # Personal AI Knowledge Assistant
 
-A RAG (Retrieval-Augmented Generation) powered assistant that lets you chat with your own documents. Upload PDFs, text files, or markdown notes and get AI answers with exact source citations.
+A RAG (Retrieval-Augmented Generation) powered assistant that lets you chat with your own documents. Upload PDFs, text files, or markdown notes and get AI answers with exact source citations. A excellent local file reader using RAG framework. 
 
 ## Features
 
